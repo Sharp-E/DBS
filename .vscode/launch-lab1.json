@@ -2,32 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "BasicTestRepoCompilesAndRuns.TestShouldAlwaysSucceed",
-      "program": "${command:cmake.buildDirectory}/tests/BasicTestRepoCompilesAndRuns",
-      "args": [
-        "--gtest_filter='BasicTestRepoCompilesAndRuns.TestShouldAlwaysSucceed'"
-      ],
-      "type": "cppdbg",
-      "request": "launch",
-      "stopAtEntry": false,
-      "cwd": "${command:cmake.buildDirectory}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        },
-        {
-          "description": "Set Disassembly Flavor to Intel",
-          "text": "-gdb-set disassembly-flavor intel",
-          "ignoreFailures": true
-        }
-      ]
-    },
-    {
       "name": "BasicTestFSFile.TestCreateFile",
       "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
       "args": [

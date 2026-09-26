@@ -12,3 +12,9 @@ import_supplemental_files.sh
 setup_repo.sh
 /.nfs*
 /data
+/data/systest_btree_sample
+/data/preloaded_btree
+/data/tpch_s1.tar.xz
+/data/tpch_s1
+/data/tpch_s01.tar.xz
+/data/tpch_s01
