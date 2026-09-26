@@ -1,0 +1,17 @@
+{
+    "cmake.buildDirectory": "${sourceDirectory}/build.${buildType}",
+    "cmake.parallelJobs": 8,
+    "C_Cpp.intelliSenseCacheSize": 1024,
+    "C_Cpp.intelliSenseMemoryLimit": 512,
+    "C_Cpp.intelliSenseCachePath": "/local/.cache/vscode-cpptools",
+    
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "*.inc": "cpp",
+        "*.template": "plaintext",
+        "**/src/catalog/systables/*.py.inc": "python",
+        "**/src/catalog/systables/*.inc": "plaintext",
+        "*.in": "cpp",
+        "*.dat": "plaintext"
+    }
+}

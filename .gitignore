@@ -1,0 +1,14 @@
+/.vscode
+/build
+/build.debug
+/build.release
+/build.Debug
+/build.Release
+/build.
+/external/install
+.DS_Store
+/*.tar.xz
+import_supplemental_files.sh
+setup_repo.sh
+/.nfs*
+/data

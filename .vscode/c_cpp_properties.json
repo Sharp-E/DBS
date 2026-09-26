@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "TDB_IN_TEST"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "compilerArgs": [
+                "-fno-strict-aliasing",
+                "-Wno-missing-field-initializers",
+                "-Wall",
+                "-Wextra",
+                "-Wno-unused-parameter",
+                "-fno-omit-frame-pointer"
+            ],
+            "compileCommands": "${workspaceFolder}/build.Debug/compile_commands.json"
+        }
+    ],
+    "version": 4
+}
