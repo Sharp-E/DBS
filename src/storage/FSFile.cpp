@@ -5,94 +5,187 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <cerrno>
+#include <cstring>
+#include <algorithm>
 
 #include "utils/zerobuf.h"
 
 namespace taco {
 
+static bool
+get_fd_size(int fd, size_t *size) {
+    struct stat st;
+    if (fstat(fd, &st) != 0) {
+        return false;
+    }
+    *size = (size_t) st.st_size;
+    return true;
+}
+
+FSFile::FSFile(int fd, const std::string& path, bool o_direct, size_t size):
+    m_fd(fd), m_path(path), m_o_direct(o_direct), m_size(size) {}
+
 FSFile*
 FSFile::Open(const std::string& path, bool o_trunc,
              bool o_direct, bool o_creat, mode_t mode) {
-    // Hint: wse open(2) to obtain a file descriptor of the file for read/write.
-    // The file should be opened with O_RDWR flag per specification.
-    // Run "man 2 open" in the shell for details.
-
-    //TODO implement it
-    return nullptr;
+    errno = 0;
+    if (path.empty()) {
+        return nullptr;
+    }
+    int flags = O_RDWR;
+    if (o_trunc) flags |= O_TRUNC;
+    if (o_direct) flags |= O_DIRECT;
+    if (o_creat) flags |= O_CREAT;
+    int fd = open(path.c_str(), flags, mode);
+    if (fd < 0) {
+        return nullptr;
+    }
+    size_t size;
+    if (!get_fd_size(fd, &size)) {
+        int saved_errno = errno;
+        close(fd);
+        errno = saved_errno;
+        return nullptr;
+    }
+    return new FSFile(fd, path, o_direct, size);
 }
 
 FSFile::~FSFile() {
-    //TODO implement it
+    Close();
 }
 
 bool
 FSFile::Reopen() {
-    //TODO implement it
-    return false;
+    errno = 0;
+    if (IsOpen()) {
+        Close();
+    }
+    int flags = O_RDWR;
+    if (m_o_direct) flags |= O_DIRECT;
+    int fd = open(m_path.c_str(), flags);
+    if (fd < 0) {
+        return false;
+    }
+    size_t size;
+    if (!get_fd_size(fd, &size)) {
+        int saved_errno = errno;
+        close(fd);
+        errno = saved_errno;
+        return false;
+    }
+    m_fd = fd;
+    m_size = size;
+    return true;
 }
 
 void
 FSFile::Close() {
-    // Hint: use close(2)
-    //TODO implement it
+    if (m_fd < 0) {
+        return;
+    }
+    if (close(m_fd) != 0) {
+        LOG(kWarning, "failed to close file %s: %s",
+            m_path.c_str(), strerror(errno));
+    }
+    m_fd = -1;
 }
 
 bool
 FSFile::IsOpen() const {
-    //TODO implement it
-    return false;
+    return m_fd >= 0;
 }
 
 void
 FSFile::Delete() const {
-    // Hint: use unlink(2)
-    //TODO implement it
+    if (unlink(m_path.c_str()) != 0) {
+        LOG(kWarning, "failed to delete file %s: %s",
+            m_path.c_str(), strerror(errno));
+    }
 }
 
 void
 FSFile::Read(void *buf, size_t count, off_t offset) {
-    // Hint: use pread(2)
-    //TODO implement it
+    if (offset < 0 || (size_t) offset > m_size ||
+        count > m_size - (size_t) offset) {
+        LOG(kFatal, "read out of range on file %s", m_path.c_str());
+    }
+    size_t done = 0;
+    while (done < count) {
+        ssize_t n = pread(m_fd, (char *) buf + done, count - done,
+                          offset + (off_t) done);
+        if (n < 0) {
+            if (errno == EINTR) continue;
+            LOG(kFatal, "pread failed: %s", strerror(errno));
+        }
+        if (n == 0) {
+            LOG(kFatal, "partial read on file %s", m_path.c_str());
+        }
+        done += (size_t) n;
+    }
 }
 
 void
 FSFile::Write(const void *buf, size_t count, off_t offset) {
-    // Hint: use pwrite(2)
-    //TODO implement it
+    if (offset < 0 || (size_t) offset > m_size ||
+        count > m_size - (size_t) offset) {
+        LOG(kFatal, "write out of range on file %s", m_path.c_str());
+    }
+    size_t done = 0;
+    while (done < count) {
+        ssize_t n = pwrite(m_fd, (const char *) buf + done, count - done,
+                           offset + (off_t) done);
+        if (n < 0) {
+            if (errno == EINTR) continue;
+            LOG(kFatal, "pwrite failed: %s", strerror(errno));
+        }
+        if (n == 0) {
+            LOG(kFatal, "partial write on file %s", m_path.c_str());
+        }
+        done += (size_t) n;
+    }
 }
 
 void
 FSFile::Allocate(size_t count) {
-    // Hint: call fallocate_zerofill_fast() first to see if we can use
-    // the faster fallocate(2) to extend the file.
-    //
-    // If it returns false and errno == EOPNOTSUPP (not supported by the file
-    // system), fall back to writing `count' of zeros at the end of the file.
-    // You may use g_zerobuf defined in utils/zerobuf.h as a large buffer that
-    // is always all 0.
-    //
-    // If fallocate_zerofill_fast() returns false and errno is not either 0 or
-    // EOPNOTSUPP, log a fatal error with strerror(errno) as a substring.
-
-    //TODO implement it
+    if (count == 0) {
+        return;
+    }
+    off_t offset = (off_t) m_size;
+    if (fallocate_zerofill_fast(m_fd, offset, (off_t) count)) {
+        m_size += count;
+        return;
+    }
+    if (errno != 0 && errno != EOPNOTSUPP) {
+        LOG(kFatal, "fallocate failed: %s", strerror(errno));
+    }
+    static const size_t CHUNK = 1 << 20;
+    alignas(4096) static char zeros[CHUNK] = {};
+    size_t done = 0;
+    while (done < count) {
+        size_t len = std::min(CHUNK, count - done);
+        ssize_t n = pwrite(m_fd, zeros, len, offset + (off_t) done);
+        if (n < 0) {
+            if (errno == EINTR) continue;
+            LOG(kFatal, "failed to extend file: %s", strerror(errno));
+        }
+        if (n == 0) {
+            LOG(kFatal, "failed to extend file %s", m_path.c_str());
+        }
+        done += (size_t) n;
+    }
+    m_size += count;
 }
 
 size_t
 FSFile::Size() const noexcept {
-    // Hint: you may obtain the file size using stat(2) FSFile::Size() is
-    // frequently called to determine the file size, so you might want to cache
-    // the result of stat(2) in this FSFile object (but then an
-    // FSFile::Allocate() call may extend it). You may assume no one may extend
-    // or shrink the file externally when the database is running.
-
-    //TODO implement it
-    return ~(size_t) 0;
+    return m_size;
 }
 
 void
 FSFile::Flush() {
-    // Hint: use fsync(2) or fdatasync(2).
-    //TODO implement it
+    if (fsync(m_fd) != 0) {
+        LOG(kFatal, "fsync failed: %s", strerror(errno));
+    }
 }
 
-}   // namespace taco
+}
