@@ -170,4 +170,4 @@ Table::Iterator::EndScan() {
     m_sid = INVALID_SID;
 }
 
-}   // namespace taco
+}

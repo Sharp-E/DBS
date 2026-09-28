@@ -1,4 +1,3 @@
-// src/catalog/Schema.cpp
 #include "catalog/Schema.h"
 
 #include "catalog/CatCache.h"
@@ -140,7 +139,6 @@ Schema::Create(const std::vector<Oid> &typid,
     return new Schema(typid, typparam, nullable, std::move(field_names));
 }
 
-
 template<class CCache>
 void
 Schema::ComputeLayoutImpl(CCache *catcache, bool cache_typinfo_only) {
@@ -156,23 +154,13 @@ Schema::ComputeLayoutImpl(CCache *catcache, bool cache_typinfo_only) {
         m_field_reorder_idx.resize(num_fields);
     }
 
-    // 1. Computes the offsets and reorder index of non-nullable fixed-len
-    // fields. Also caches the typlen, type alignment and m_offset values for
-    // all other fields. We also compute the number of fields in each section
-    // here.
     for (FieldId i = 0; i < num_fields; ++i) {
         Oid typid = m_field[i].m_typid;
-        // Must use auto to declare the type here:
-        // BootstrapCatCache returns const SysTable_Type* while the regular
-        // catalog cache returns std::shared_ptr<const SysTable_Type>.
         auto typ = catcache->FindType(typid);
         m_field[i].m_typlen = typ->typlen();
         m_field[i].m_typalign = typ->typalign();
 
         if (!typ->typisvarlen() && typ->typlenfunc() != InvalidOid) {
-            // Need to calculate the type length for those fixed-length types
-            // with type parameters. If the type parameter is invalid, this may
-            // return -1 which is treated the same as variable-length below.
             FunctionInfo f = FindBuiltinFunction(typ->typlenfunc());
 
             Datum arg1 = Datum::From(m_field[i].m_typparam);
@@ -183,22 +171,13 @@ Schema::ComputeLayoutImpl(CCache *catcache, bool cache_typinfo_only) {
 
         if (typ->typisvarlen() || m_field[i].m_typlen == -1) {
 
-            // Variable-length field:
-            // The typlen of a varlen field must be -1 in the catalog, but let's
-            // ensure that happens even if someone messes up with the catalog.
-            // We need this to differentiate between varlen fields and nullable
-            // fixed-len fields.
             if (m_field[i].m_typlen != -1)
                 m_field[i].m_typlen = -1;
 
-            // variable-length field must be passed by reference
             ASSERT(typ->typbyref());
             m_field[i].m_typbyref = true;
 
             if (!cache_typinfo_only) {
-                // assign the index into the varlen end
-                // array. The offset value is -m_offset + 1, so make sure we
-                // increment the num_varlen_fields before assigning the index.
                 ++num_varlen_fields;
                 m_field[i].m_offset = -num_varlen_fields;
 
@@ -209,26 +188,19 @@ Schema::ComputeLayoutImpl(CCache *catcache, bool cache_typinfo_only) {
         } else {
             m_field[i].m_typbyref = typ->typbyref();
 
-            // Need to calculate the type length for those with type parameters
             if (typ->typlenfunc() != InvalidOid) {
                 ASSERT(m_field[i].m_typlen >= 0);
             } else {
-                // pass-by-value types must a length of 1, 2, 4 or 8 currently
                 ASSERT(m_field[i].m_typlen <= 8 &&
                         ((m_field[i].m_typlen - 1) & m_field[i].m_typlen) == 0);
             }
 
             if (!cache_typinfo_only) {
                 if (m_field[i].m_nullbit_id >= 0) {
-                    // nullable fixed-length field
                     ++num_nullable_fixedlen_fields;
                     m_field[i].m_offset = -num_nullable_fixedlen_fields;
                 } else {
-                    // non-nullable fixed-length field
-                    // This is the only case where we can directly compute a fixed
-                    // offset.
                     uint8_t align = typ->typalign();
-                    // check for overflow after alignment
                     RETURN_IF((off = TYPEALIGN(align, off)) < 0);
                     m_field[i].m_offset = off;
                     RETURN_IF(!AddWithCheck(off, m_field[i].m_typlen));
@@ -250,7 +222,6 @@ Schema::ComputeLayoutImpl(CCache *catcache, bool cache_typinfo_only) {
     m_num_varlen_fields = num_varlen_fields;
 
     if (num_nonnullable_fixedlen_fields == num_fields) {
-        // fast path for a schema with all non-nullable fixed-length fields
         RETURN_IF(MAXALIGN(off) < 0);
         off = MAXALIGN(off);
         m_null_bitmap_begin = off;
@@ -264,25 +235,14 @@ Schema::ComputeLayoutImpl(CCache *catcache, bool cache_typinfo_only) {
     m_has_only_nonnullable_fixedlen_fields = false;
     m_null_bitmap_begin = off;
 
-    // 2. Assign the remaining of the reorder indexes, and the null bit id.
-    // Also computes the number of nullable fields.
-    //
-    // The null bits follow the original order of the fields rather than
-    // the order the fields are laid out in the record layout. For example,
-    // suppose Field 2 and 3 are nullable variable-length fields, while Field 0
-    // is a nullable fixed-length field. Then the order in the bitmap
-    // is 0, 2, 3.
     for (FieldId i = 0; i < num_fields; ++i) {
         if (m_field[i].m_typlen == -1) {
-            // variable-len field
             FieldId field_seqno = num_nonnullable_fixedlen_fields +
                 (-m_field[i].m_offset - 1);
             m_field_reorder_idx[field_seqno] = i;
 
         } else {
             if (m_field[i].m_nullbit_id >= 0) {
-                // nullable fixed-len field
-                // They follow the non-nullable fixed-len fields in order.
                 FieldId field_seqno = num_nonnullable_fixedlen_fields +
                     num_varlen_fields + (-m_field[i].m_offset - 1);
                 m_field_reorder_idx[field_seqno] = i;
@@ -294,14 +254,9 @@ Schema::ComputeLayoutImpl(CCache *catcache, bool cache_typinfo_only) {
         }
     }
 
-    // 3. Compute the null bitmap's size.  The number of bytes needed for the
-    // null bitmap is ceil(num_nullable_fields / 8). No need to MAXALIGN the
-    // offset here. We'll do that below.
     m_null_bitmap_begin = off;
     RETURN_IF(!AddWithCheck(off, (num_nullable_fields + 7) >> 3));
 
-    // 4. Compute the offset to the varlen end array and the beginning
-    // of the varlen payload.
     RETURN_IF((off = TYPEALIGN(sizeof(FieldOffset), off)) < 0);
     m_varlen_end_array_begin = off;
     RETURN_IF(!AddWithCheck(off,
@@ -400,13 +355,9 @@ Schema::WritePayloadToBufferImpl(const std::vector<SomeDatum> &data,
     init_len = MAXALIGN(init_len);
     RETURN_IF(init_len < 0, -1);
     RETURN_IF(init_len + m_varlen_payload_begin < 0, -1);
-    // XXX avoid frequent allocations with small payload sizes, this
-    // probably shouldn't be a fixed capacity though.
     buf.reserve(64);
     buf.resize(init_len + m_varlen_payload_begin);
 
-    // This does not need to be computed until we reach the varlen payload,
-    // where the buffer may be reallocated.
     FieldOffset off = m_varlen_payload_begin;
     char *payload_begin = buf.data() + init_len;
     for (FieldId field_id : m_field_reorder_idx) {
@@ -415,64 +366,51 @@ Schema::WritePayloadToBufferImpl(const std::vector<SomeDatum> &data,
         const char *field_bytes;
 
         if (m_field[field_id].m_offset >= 0) {
-            // non-nullable fixed-len field
             if (data[field_id].isnull()) {
                 LOG(kError, "NULL value passed to non-null field "
                             FIELDID_FORMAT, field_id);
             }
             field_len = m_field[field_id].m_typlen;
             if (m_field[field_id].m_typbyref) {
-                // pass by reference
                 field_bytes = data[field_id].GetVarlenBytes();
                 copy_bytes(true, field_len, data[field_id].GetVarlenBytes(),
                            payload_begin + m_field[field_id].m_offset);
             } else {
-                // pass by value
                 field_bytes = data[field_id].GetFixedlenBytes();
                 copy_bytes(false, field_len, data[field_id].GetFixedlenBytes(),
                            payload_begin + m_field[field_id].m_offset);
             }
         } else {
-            // set null bit if necessary
             if (data[field_id].isnull()) {
                 char *null_bitmap = payload_begin + m_null_bitmap_begin;
                 null_bitmap[m_field[field_id].m_nullbit_id >> 3] |=
                     1 << (m_field[field_id].m_nullbit_id & 7);
 
-                // set the record end offset for a varlen field
                 if (m_field[field_id].m_typlen == -1) {
                     FieldOffset *varlen_end_array = (FieldOffset *)(
                         payload_begin + m_varlen_end_array_begin);
                     varlen_end_array[-m_field[field_id].m_offset - 1] = off;
                 }
-                // nothing to do for a nullable fixed-len field
                 continue;
             }
 
-            // It's non-null. First, align the offset.
             FieldOffset newoff = TYPEALIGN(m_field[field_id].m_typalign,
                                            off);
             RETURN_IF(init_len + newoff < 0, -1);
 
-            // non-null datum, continue with copying the content below
             if (m_field[field_id].m_typlen == -1) {
-                // variable-len field
                 field_len = (FieldOffset) data[field_id].GetVarlenSize();
                 field_bytes = data[field_id].GetVarlenBytes();
 
-                // update the varlen end array
                 FieldOffset *varlen_end_array = (FieldOffset *) (
                     payload_begin + m_varlen_end_array_begin);
                 varlen_end_array[-m_field[field_id].m_offset - 1] =
                     newoff + field_len;
             } else {
-                // nullable fixed-len field
                 field_len = m_field[field_id].m_typlen;
                 if (m_field[field_id].m_typbyref) {
-                    // pass by reference
                     field_bytes = data[field_id].GetVarlenBytes();
                 } else {
-                    // pass by value
                     field_bytes = data[field_id].GetFixedlenBytes();
                 }
             }
@@ -480,8 +418,6 @@ Schema::WritePayloadToBufferImpl(const std::vector<SomeDatum> &data,
 
             ASSERT(off + init_len == (FieldOffset) buf.size());
             buf.resize(newoff + field_len + init_len);
-            // the buffer may be reallocated, so recompute the
-            // payload_begin
             payload_begin = buf.data() + init_len;
             copy_bytes(m_field[field_id].m_typbyref,
                        field_len, field_bytes,
@@ -498,7 +434,6 @@ Schema::WritePayloadToBufferImpl(const std::vector<SomeDatum> &data,
     }
     return off;
 }
-
 
 bool
 Schema::FieldIsNull(FieldId field_id, const char *payload) const {
@@ -520,18 +455,14 @@ Schema::GetField(FieldId field_id, const char *payload) const {
 
     auto p = GetOffsetAndLength(field_id, payload);
     if (m_field[field_id].m_typlen == -1) {
-        // varlen field
         return Datum::FromVarlenBytes(payload + p.first, p.second);
     }
 
     if (m_field[field_id].m_typbyref) {
-        // pass-by-reference fixed-len field
         return Datum::FromVarlenBytes(payload + p.first,
                                       m_field[field_id].m_typlen);
     }
 
-
-    // pass-by-value fixed-len field
     return Datum::FromFixedlenBytes(payload + p.first, p.second);
 }
 
@@ -555,4 +486,4 @@ Schema::GetFieldIdFromFieldName(absl::string_view field_name) const {
     return InvalidFieldId;
 }
 
-}   // namespace taco
+}
