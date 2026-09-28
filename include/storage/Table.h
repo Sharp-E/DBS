@@ -79,7 +79,8 @@ private:
      *
      * TODO you may add any arguments to the constructor that you need
      */
-    Table(std::shared_ptr<const TableDesc> tabdesc);
+    Table(std::shared_ptr<const TableDesc> tabdesc,
+          std::unique_ptr<File> file);
 
 public:
 
@@ -159,7 +160,7 @@ private:
      */
     std::shared_ptr<const TableDesc> m_tabdesc;
 
-    // TODO add any private members you need
+    std::unique_ptr<File> m_file;
 
 public:
 
@@ -313,7 +314,9 @@ public:
          */
         ScopedBufferId  m_pinned_bufid;
 
-        // TODO add additional members if needed
+        PageNumber      m_pid = INVALID_PID;
+
+        SlotId          m_sid = INVALID_SID;
 
         friend class Table;
     };
