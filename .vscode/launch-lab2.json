@@ -2,10 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "BasicTestRepoCompilesAndRuns.TestShouldAlwaysSucceed",
-      "program": "${command:cmake.buildDirectory}/tests/BasicTestRepoCompilesAndRuns",
+      "name": "BasicTestSchema.TestNonnullableIntFields",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestRepoCompilesAndRuns.TestShouldAlwaysSucceed'"
+        "--gtest_filter='BasicTestSchema.TestNonnullableIntFields'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -28,10 +28,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestCreateFile",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNonnullableFixedLenFields1",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestCreateFile'"
+        "--gtest_filter='BasicTestSchema.TestNonnullableFixedLenFields1'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -54,10 +54,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestOpenFile",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNonnullableFixedLenFields2",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestOpenFile'"
+        "--gtest_filter='BasicTestSchema.TestNonnullableFixedLenFields2'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -80,10 +80,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestOpenDirectory",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNonnullableFixedLenFields3",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestOpenDirectory'"
+        "--gtest_filter='BasicTestSchema.TestNonnullableFixedLenFields3'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -106,10 +106,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestOpenNonexistentFile",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNonnullableVarlenFields1",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestOpenNonexistentFile'"
+        "--gtest_filter='BasicTestSchema.TestNonnullableVarlenFields1'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -132,10 +132,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestOpenFileWithInsufficientPermission",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNonnullableVarlenFields2",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestOpenFileWithInsufficientPermission'"
+        "--gtest_filter='BasicTestSchema.TestNonnullableVarlenFields2'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -158,10 +158,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestReopen",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNonnullableVarlenFields3",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestReopen'"
+        "--gtest_filter='BasicTestSchema.TestNonnullableVarlenFields3'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -184,10 +184,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestAutoClose",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNullableIntFields1",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestAutoClose'"
+        "--gtest_filter='BasicTestSchema.TestNullableIntFields1'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -210,10 +210,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestDoubleCloseWarning",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNullableIntFields2",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestDoubleCloseWarning'"
+        "--gtest_filter='BasicTestSchema.TestNullableIntFields2'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -236,10 +236,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestDoubleClose",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNullableIntFields3",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestDoubleClose'"
+        "--gtest_filter='BasicTestSchema.TestNullableIntFields3'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -262,10 +262,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestRead",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNullableIntFields4",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestRead'"
+        "--gtest_filter='BasicTestSchema.TestNullableIntFields4'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -288,10 +288,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestAllocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNullableVarlenFields1",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestAllocate'"
+        "--gtest_filter='BasicTestSchema.TestNullableVarlenFields1'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -314,10 +314,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestWrite",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNullableVarlenFields2",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestWrite'"
+        "--gtest_filter='BasicTestSchema.TestNullableVarlenFields2'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -340,10 +340,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestDelete",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNullableVarlenFields3",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestDelete'"
+        "--gtest_filter='BasicTestSchema.TestNullableVarlenFields3'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -366,10 +366,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestDeleteFailureWarning",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestSchema.TestNullableVarlenFields4",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestDeleteFailureWarning'"
+        "--gtest_filter='BasicTestSchema.TestNullableVarlenFields4'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -392,11 +392,11 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestCreateFileNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestTable.TestEmptyTable",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestCreateFile'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='BasicTestTable.TestEmptyTable'",
+        "--gtest_also_run_disabled_tests"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -419,11 +419,11 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestOpenFileNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestTable.TestInsertRecord",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestOpenFile'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='BasicTestTable.TestInsertRecord'",
+        "--gtest_also_run_disabled_tests"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -446,11 +446,11 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestOpenDirectoryNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestTable.TestEraseRecord",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestOpenDirectory'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='BasicTestTable.TestEraseRecord'",
+        "--gtest_also_run_disabled_tests"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -473,11 +473,11 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestOpenNonexistentFileNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestTable.TestUpdateRecord",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestOpenNonexistentFile'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='BasicTestTable.TestUpdateRecord'",
+        "--gtest_also_run_disabled_tests"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -500,11 +500,11 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestOpenFileWithInsufficientPermissionNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "BasicTestTable.TestStartScanFrom",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestOpenFileWithInsufficientPermission'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='BasicTestTable.TestStartScanFrom'",
+        "--gtest_also_run_disabled_tests"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -527,11 +527,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestReopenNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "*/BasicTestVarlenDataPage.TestInitialize/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestReopen'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestInitialize/*'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -554,11 +553,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestAutoCloseNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "*/BasicTestVarlenDataPage.TestInsertRecord/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestAutoClose'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestInsertRecord/*'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -581,11 +579,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestDoubleCloseWarningNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "*/BasicTestVarlenDataPage.TestEraseRecord/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestDoubleCloseWarning'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestEraseRecord/*'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -608,11 +605,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestDoubleCloseNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "*/BasicTestVarlenDataPage.TestUpdateRecord/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestDoubleClose'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestUpdateRecord/*'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -635,11 +631,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestReadNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "*/BasicTestVarlenDataPage.TestSidNotValidErrors/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestRead'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestSidNotValidErrors/*'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -662,11 +657,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestAllocateNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "*/BasicTestVarlenDataPage.TestInsertionWithCompactionExistingSlot/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestAllocate'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestInsertionWithCompactionExistingSlot/*'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -689,11 +683,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestWriteNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "*/BasicTestVarlenDataPage.TestInsertionWithCompactionNewSlot/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestWrite'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestInsertionWithCompactionNewSlot/*'"
       ],
       "type": "cppdbg",
       "request": "launch",
@@ -716,38 +709,10 @@
       ]
     },
     {
-      "name": "BasicTestFSFile.TestDeleteNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
+      "name": "*/BasicTestVarlenDataPage.TestUpdateWithCompaction/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
       "args": [
-        "--gtest_filter='BasicTestFSFile.TestDelete'",
-        "--test_never_call_fallocate"
-      ],
-      "type": "cppdbg",
-      "request": "launch",
-      "stopAtEntry": false,
-      "cwd": "${command:cmake.buildDirectory}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        },
-        {
-          "description": "Set Disassembly Flavor to Intel",
-          "text": "-gdb-set disassembly-flavor intel",
-          "ignoreFailures": true
-        }
-      ]
-    },
-    {
-      "name": "BasicTestFSFile.TestDeleteFailureWarningNoFallocate",
-      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestFSFile",
-      "args": [
-        "--gtest_filter='BasicTestFSFile.TestDeleteFailureWarning'",
-        "--test_never_call_fallocate"
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestUpdateWithCompaction/*'"
       ],
       "type": "cppdbg",
       "request": "launch",

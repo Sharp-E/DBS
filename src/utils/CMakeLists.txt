@@ -9,6 +9,8 @@ set(UTILS_LIB_SRC
     pgmkdirp.cpp
     builtin_funcs.cpp
     pg_datetime.cpp
+    Walker.cpp
+    TruncatedZipfian.cpp
 )
 
 add_tdb_object_library(utils ${UTILS_LIB_SRC})

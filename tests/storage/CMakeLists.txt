@@ -15,4 +15,9 @@ gtest_add_tests(
     TEST_SUFFIX "NoFallocate"
 )
 
+add_tdb_test(BasicTestVarlenDataPage)
+
+add_tdb_test_binary(BasicTestTable)
+gtest_discover_tests(BasicTestTable)
+
 
