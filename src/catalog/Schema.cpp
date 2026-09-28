@@ -330,8 +330,50 @@ std::pair<FieldOffset, FieldOffset>
 Schema::GetOffsetAndLength(
     FieldId field_id,
     const char *payload) const {
-    // TODO implement me in project 2
-    return std::make_pair(-1, -1);
+    EnsureLayoutComputed();
+    const FieldInfo &f = m_field[field_id];
+
+    // 1. non-nullable fixed-len field: offset is stored in the schema
+    if (f.m_offset >= 0) {
+        return std::make_pair(f.m_offset, (FieldOffset) f.m_typlen);
+    }
+
+    const FieldOffset *varlen_end =
+        (const FieldOffset *)(payload + m_varlen_end_array_begin);
+
+    // 2. variable-length field: end offset is stored in the varlen end array,
+    // begin is the previous varlen field's end aligned to this field's typalign
+    if (f.m_typlen == -1) {
+        FieldId k = -f.m_offset - 1;
+        FieldOffset prev_end = (k == 0) ? m_varlen_payload_begin
+                                        : varlen_end[k - 1];
+        FieldOffset end = varlen_end[k];
+        if (FieldIsNull(field_id, payload)) {
+            return std::make_pair(end, (FieldOffset) 0);
+        }
+        FieldOffset begin = (FieldOffset) TYPEALIGN(f.m_typalign, prev_end);
+        return std::make_pair(begin, (FieldOffset)(end - begin));
+    }
+
+    // 3. nullable fixed-len field: they follow the last varlen field in
+    // layout order, and null ones take no space, so walk the preceding ones.
+    FieldId k = -f.m_offset - 1;
+    FieldOffset off = (m_num_varlen_fields == 0)
+        ? m_varlen_payload_begin
+        : varlen_end[m_num_varlen_fields - 1];
+    FieldId base = m_num_nonnullable_fixedlen_fields + m_num_varlen_fields;
+    for (FieldId j = 0; j < k; ++j) {
+        FieldId fid = m_field_reorder_idx[base + j];
+        if (!FieldIsNull(fid, payload)) {
+            off = (FieldOffset) TYPEALIGN(m_field[fid].m_typalign, off);
+            off += m_field[fid].m_typlen;
+        }
+    }
+    if (FieldIsNull(field_id, payload)) {
+        return std::make_pair(off, (FieldOffset) 0);
+    }
+    off = (FieldOffset) TYPEALIGN(f.m_typalign, off);
+    return std::make_pair(off, (FieldOffset) f.m_typlen);
 }
 
 FieldOffset
@@ -465,8 +507,15 @@ Schema::WritePayloadToBufferImpl(const std::vector<SomeDatum> &data,
 
 bool
 Schema::FieldIsNull(FieldId field_id, const char *payload) const {
-    // TODO implement me in project 2
-    return true;
+    EnsureLayoutComputed();
+    FieldId nullbit = m_field[field_id].m_nullbit_id;
+    if (nullbit < 0) {
+        // non-nullable field
+        return false;
+    }
+    const unsigned char *bitmap =
+        (const unsigned char *)(payload + m_null_bitmap_begin);
+    return (bitmap[nullbit >> 3] >> (nullbit & 7)) & 1;
 }
 
 Datum
