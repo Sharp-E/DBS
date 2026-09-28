@@ -312,7 +312,7 @@ private:
     }
 
 
-    // TODO implement it
+    char *m_pagebuf;
 };
 
 }   // namespace taco

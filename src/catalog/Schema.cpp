@@ -333,7 +333,6 @@ Schema::GetOffsetAndLength(
     EnsureLayoutComputed();
     const FieldInfo &f = m_field[field_id];
 
-    // 1. non-nullable fixed-len field: offset is stored in the schema
     if (f.m_offset >= 0) {
         return std::make_pair(f.m_offset, (FieldOffset) f.m_typlen);
     }
@@ -341,8 +340,6 @@ Schema::GetOffsetAndLength(
     const FieldOffset *varlen_end =
         (const FieldOffset *)(payload + m_varlen_end_array_begin);
 
-    // 2. variable-length field: end offset is stored in the varlen end array,
-    // begin is the previous varlen field's end aligned to this field's typalign
     if (f.m_typlen == -1) {
         FieldId k = -f.m_offset - 1;
         FieldOffset prev_end = (k == 0) ? m_varlen_payload_begin
@@ -355,8 +352,6 @@ Schema::GetOffsetAndLength(
         return std::make_pair(begin, (FieldOffset)(end - begin));
     }
 
-    // 3. nullable fixed-len field: they follow the last varlen field in
-    // layout order, and null ones take no space, so walk the preceding ones.
     FieldId k = -f.m_offset - 1;
     FieldOffset off = (m_num_varlen_fields == 0)
         ? m_varlen_payload_begin
@@ -510,7 +505,6 @@ Schema::FieldIsNull(FieldId field_id, const char *payload) const {
     EnsureLayoutComputed();
     FieldId nullbit = m_field[field_id].m_nullbit_id;
     if (nullbit < 0) {
-        // non-nullable field
         return false;
     }
     const unsigned char *bitmap =
