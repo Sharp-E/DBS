@@ -6,13 +6,6 @@
 
 namespace taco {
 
-/*!
- * `TempTableState` is the execution state for a in-memory temp table scan. This
- * execution state should return all records in the in-memory temp table.
- *
- * CAUTION: You need to make sure the output record's `NullableDatumRef` are always
- * memory safe at any time until the operator is closed.
- */
 class TempTableState: public PlanExecState {
 public:
     ~TempTableState() override;
@@ -43,7 +36,8 @@ private:
 
     const TempTable* m_plan;
 
-    // You can add your own states here.
+    // 0 = before the first record; k = currently at m_records[k - 1]
+    uint64_t m_pos;
 
     friend class TempTable;
 };

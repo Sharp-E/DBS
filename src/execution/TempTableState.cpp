@@ -3,57 +3,71 @@
 namespace taco {
 
 TempTableState::TempTableState(const TempTable* plan)
-: PlanExecState(TAG(TempTableState)), m_plan(plan)
+: PlanExecState(TAG(TempTableState)), m_plan(plan), m_pos(0)
 {
-    // TODO: implement it
 }
 
 TempTableState::~TempTableState() {
-    // TODO: implement it
+    if (m_initialized) {
+        close();
+    }
 }
 
 void
 TempTableState::node_properties_to_string(std::string& buf, int indent) const {
-    // For debugging purpose, you can implement it base on your need.
+    append_indent(buf, indent);
+    absl::StrAppendFormat(&buf, "POS = %d", (int) m_pos);
 }
 
 void
 TempTableState::init() {
-    // TODO: implement it
+    m_pos = 0;
+    m_initialized = true;
 }
 
 bool
 TempTableState::next_tuple() {
-    // TODO: implement it
+    if (m_pos < (uint64_t) m_plan->m_records.size()) {
+        ++m_pos;
+        return true;
+    }
+    // stay one past the end so repeated calls keep returning false
+    m_pos = (uint64_t) m_plan->m_records.size() + 1;
     return false;
 }
 
 std::vector<NullableDatumRef>
 TempTableState::get_record() {
-    // TODO: implement it
-    return {};
+    // references point into the plan's Datums, which outlive this state
+    const std::vector<Datum>& rec = m_plan->m_records[m_pos - 1];
+    std::vector<NullableDatumRef> out;
+    out.reserve(rec.size());
+    for (const Datum& d : rec) {
+        out.emplace_back(d);
+    }
+    return out;
 }
 
 void
 TempTableState::close() {
-    // TODO: implement it
+    m_pos = 0;
+    m_initialized = false;
 }
 
 void
 TempTableState::rewind() {
-    // TODO: implement it
+    m_pos = 0;
 }
 
 Datum
 TempTableState::save_position() const {
-    // TODO: implement it
-    return Datum::FromNull();
+    return Datum::From(m_pos);
 }
 
 bool
 TempTableState::rewind(DatumRef saved_position) {
-    // TODO: implement it
-    return false;
+    m_pos = saved_position.GetUInt64();
+    return m_pos >= 1 && m_pos <= (uint64_t) m_plan->m_records.size();
 }
 
 }
