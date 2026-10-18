@@ -768,6 +768,739 @@
           "ignoreFailures": true
         }
       ]
+    },
+    {
+      "name": "BasicTestSchema.TestNonnullableIntFields",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNonnullableIntFields'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNonnullableFixedLenFields1",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNonnullableFixedLenFields1'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNonnullableFixedLenFields2",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNonnullableFixedLenFields2'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNonnullableFixedLenFields3",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNonnullableFixedLenFields3'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNonnullableVarlenFields1",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNonnullableVarlenFields1'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNonnullableVarlenFields2",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNonnullableVarlenFields2'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNonnullableVarlenFields3",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNonnullableVarlenFields3'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNullableIntFields1",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNullableIntFields1'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNullableIntFields2",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNullableIntFields2'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNullableIntFields3",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNullableIntFields3'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNullableIntFields4",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNullableIntFields4'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNullableVarlenFields1",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNullableVarlenFields1'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNullableVarlenFields2",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNullableVarlenFields2'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNullableVarlenFields3",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNullableVarlenFields3'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSchema.TestNullableVarlenFields4",
+      "program": "${command:cmake.buildDirectory}/tests/catalog/BasicTestSchema",
+      "args": [
+        "--gtest_filter='BasicTestSchema.TestNullableVarlenFields4'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTable.TestEmptyTable",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
+      "args": [
+        "--gtest_filter='BasicTestTable.TestEmptyTable'",
+        "--gtest_also_run_disabled_tests"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTable.TestInsertRecord",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
+      "args": [
+        "--gtest_filter='BasicTestTable.TestInsertRecord'",
+        "--gtest_also_run_disabled_tests"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTable.TestEraseRecord",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
+      "args": [
+        "--gtest_filter='BasicTestTable.TestEraseRecord'",
+        "--gtest_also_run_disabled_tests"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTable.TestUpdateRecord",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
+      "args": [
+        "--gtest_filter='BasicTestTable.TestUpdateRecord'",
+        "--gtest_also_run_disabled_tests"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTable.TestStartScanFrom",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestTable",
+      "args": [
+        "--gtest_filter='BasicTestTable.TestStartScanFrom'",
+        "--gtest_also_run_disabled_tests"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestVarlenDataPage.TestInitialize/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestInitialize/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestVarlenDataPage.TestInsertRecord/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestInsertRecord/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestVarlenDataPage.TestEraseRecord/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestEraseRecord/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestVarlenDataPage.TestUpdateRecord/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestUpdateRecord/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestVarlenDataPage.TestSidNotValidErrors/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestSidNotValidErrors/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestVarlenDataPage.TestInsertionWithCompactionExistingSlot/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestInsertionWithCompactionExistingSlot/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestVarlenDataPage.TestInsertionWithCompactionNewSlot/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestInsertionWithCompactionNewSlot/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestVarlenDataPage.TestUpdateWithCompaction/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestVarlenDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestVarlenDataPage.TestUpdateWithCompaction/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
     }
   ]
 }

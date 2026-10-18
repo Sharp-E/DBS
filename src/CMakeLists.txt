@@ -20,6 +20,11 @@ add_subdirectory(dbmain)
 
 add_subdirectory(expr)
 
+add_subdirectory(extsort)
+
+add_subdirectory(plan)
+add_subdirectory(execution)
+
 add_subdirectory(storage)
 
 add_subdirectory(utils)

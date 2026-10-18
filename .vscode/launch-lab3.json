@@ -1,0 +1,1115 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "*/BasicTestSortedDataPage.TestInsertRecordDeterministic/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestSortedDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestSortedDataPage.TestInsertRecordDeterministic/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestSortedDataPage.TestInsertRecordRandom/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestSortedDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestSortedDataPage.TestInsertRecordRandom/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestSortedDataPage.TestInsertRecordRandomOutOfBound/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestSortedDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestSortedDataPage.TestInsertRecordRandomOutOfBound/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "*/BasicTestSortedDataPage.TestInsertionWithCompactionExistingSlot/*",
+      "program": "${command:cmake.buildDirectory}/tests/storage/BasicTestSortedDataPage",
+      "args": [
+        "--gtest_filter='*/BasicTestSortedDataPage.TestInsertionWithCompactionExistingSlot/*'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExpression.TestExpressionLiteral",
+      "program": "${command:cmake.buildDirectory}/tests/expr/BasicTestExpression",
+      "args": [
+        "--gtest_filter='BasicTestExpression.TestExpressionLiteral'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExpression.TestExpressionVariable",
+      "program": "${command:cmake.buildDirectory}/tests/expr/BasicTestExpression",
+      "args": [
+        "--gtest_filter='BasicTestExpression.TestExpressionVariable'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExpression.TestExpressionBinaryOp",
+      "program": "${command:cmake.buildDirectory}/tests/expr/BasicTestExpression",
+      "args": [
+        "--gtest_filter='BasicTestExpression.TestExpressionBinaryOp'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExpression.TestExpressionUnaryOp",
+      "program": "${command:cmake.buildDirectory}/tests/expr/BasicTestExpression",
+      "args": [
+        "--gtest_filter='BasicTestExpression.TestExpressionUnaryOp'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExpression.TestExpressionAndOr",
+      "program": "${command:cmake.buildDirectory}/tests/expr/BasicTestExpression",
+      "args": [
+        "--gtest_filter='BasicTestExpression.TestExpressionAndOr'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExpression.TestExpressionCast",
+      "program": "${command:cmake.buildDirectory}/tests/expr/BasicTestExpression",
+      "args": [
+        "--gtest_filter='BasicTestExpression.TestExpressionCast'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExpression.TestExpressionFuncCall",
+      "program": "${command:cmake.buildDirectory}/tests/expr/BasicTestExpression",
+      "args": [
+        "--gtest_filter='BasicTestExpression.TestExpressionFuncCall'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTableScan.TestScanEmptyTable",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTableScan",
+      "args": [
+        "--gtest_filter='BasicTestTableScan.TestScanEmptyTable'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTableScan.TestScanOneRecord",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTableScan",
+      "args": [
+        "--gtest_filter='BasicTestTableScan.TestScanOneRecord'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTableScan.TestScanManyRecords",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTableScan",
+      "args": [
+        "--gtest_filter='BasicTestTableScan.TestScanManyRecords'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTableScan.TestScanEndAndReinit",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTableScan",
+      "args": [
+        "--gtest_filter='BasicTestTableScan.TestScanEndAndReinit'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTableScan.TestScanRewind",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTableScan",
+      "args": [
+        "--gtest_filter='BasicTestTableScan.TestScanRewind'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTableScan.TestScanOnTableWithHoles",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTableScan",
+      "args": [
+        "--gtest_filter='BasicTestTableScan.TestScanOnTableWithHoles'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTableScan.TestScanAndRewindOnTableWithHoles",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTableScan",
+      "args": [
+        "--gtest_filter='BasicTestTableScan.TestScanAndRewindOnTableWithHoles'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTempTable.TestEmptyTempTable",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTempTable",
+      "args": [
+        "--gtest_filter='BasicTestTempTable.TestEmptyTempTable'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestTempTable.TestTempTableWithRecords",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestTempTable",
+      "args": [
+        "--gtest_filter='BasicTestTempTable.TestTempTableWithRecords'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestProjection.TestFilterOneField",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestProjection",
+      "args": [
+        "--gtest_filter='BasicTestProjection.TestFilterOneField'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestProjection.TestFilterTwoField",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestProjection",
+      "args": [
+        "--gtest_filter='BasicTestProjection.TestFilterTwoField'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestProjection.TestBinaryOperatorProjection",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestProjection",
+      "args": [
+        "--gtest_filter='BasicTestProjection.TestBinaryOperatorProjection'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestLimit.TestLimitEmptyInput",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestLimit",
+      "args": [
+        "--gtest_filter='BasicTestLimit.TestLimitEmptyInput'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestLimit.TestLimitNormal",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestLimit",
+      "args": [
+        "--gtest_filter='BasicTestLimit.TestLimitNormal'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestLimit.TestLimitOverflow",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestLimit",
+      "args": [
+        "--gtest_filter='BasicTestLimit.TestLimitOverflow'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSelection.TestSelectionEmptyChild",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSelection",
+      "args": [
+        "--gtest_filter='BasicTestSelection.TestSelectionEmptyChild'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSelection.TestSelectionEmptyResult",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSelection",
+      "args": [
+        "--gtest_filter='BasicTestSelection.TestSelectionEmptyResult'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSelection.TestSelectionExprFilter",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSelection",
+      "args": [
+        "--gtest_filter='BasicTestSelection.TestSelectionExprFilter'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestAggregation.TestAggregationEmptyInput",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestAggregation",
+      "args": [
+        "--gtest_filter='BasicTestAggregation.TestAggregationEmptyInput'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestAggregation.TestAggregationSingleColumn",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestAggregation",
+      "args": [
+        "--gtest_filter='BasicTestAggregation.TestAggregationSingleColumn'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestAggregation.TestAggregationMultipleColumn",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestAggregation",
+      "args": [
+        "--gtest_filter='BasicTestAggregation.TestAggregationMultipleColumn'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSort.TestSortEmpty",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSort",
+      "args": [
+        "--gtest_filter='BasicTestSort.TestSortEmpty'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSort.TestSortSingleColumnAsc",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSort",
+      "args": [
+        "--gtest_filter='BasicTestSort.TestSortSingleColumnAsc'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSort.TestSortSingleColumnDesc",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSort",
+      "args": [
+        "--gtest_filter='BasicTestSort.TestSortSingleColumnDesc'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSort.TestSortTwoColumnsAscAsc",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSort",
+      "args": [
+        "--gtest_filter='BasicTestSort.TestSortTwoColumnsAscAsc'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSort.TestSortTwoColumnsDescAsc",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSort",
+      "args": [
+        "--gtest_filter='BasicTestSort.TestSortTwoColumnsDescAsc'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestSort.TestSortNullableColumnAsc",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestSort",
+      "args": [
+        "--gtest_filter='BasicTestSort.TestSortNullableColumnAsc'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestCompositePlan.TestAggregationQuery",
+      "program": "${command:cmake.buildDirectory}/tests/execution/BasicTestCompositePlan",
+      "args": [
+        "--gtest_filter='BasicTestCompositePlan.TestAggregationQuery'"
+      ],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExternalSort.TestSortUniformInt64Asc",
+      "program": "${command:cmake.buildDirectory}/tests/extsort/BasicTestExternalSort.TestSortUniformInt64Asc.sh",
+      "args": [],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExternalSort.TestSortUniformInt64Desc",
+      "program": "${command:cmake.buildDirectory}/tests/extsort/BasicTestExternalSort.TestSortUniformInt64Desc.sh",
+      "args": [],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExternalSort.TestSortUniformStringAsc",
+      "program": "${command:cmake.buildDirectory}/tests/extsort/BasicTestExternalSort.TestSortUniformStringAsc.sh",
+      "args": [],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "BasicTestExternalSort.TestSortUniformStringDesc",
+      "program": "${command:cmake.buildDirectory}/tests/extsort/BasicTestExternalSort.TestSortUniformStringDesc.sh",
+      "args": [],
+      "type": "cppdbg",
+      "request": "launch",
+      "stopAtEntry": false,
+      "cwd": "${command:cmake.buildDirectory}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

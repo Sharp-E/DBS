@@ -1,5 +1,6 @@
 # src/utils/CMakeLists.txt
 
+add_subdirectory(tree)
 add_subdirectory(typsupp)
 
 set(UTILS_LIB_SRC
@@ -11,6 +12,7 @@ set(UTILS_LIB_SRC
     pg_datetime.cpp
     Walker.cpp
     TruncatedZipfian.cpp
+    CSVReader.cpp
 )
 
 add_tdb_object_library(utils ${UTILS_LIB_SRC})

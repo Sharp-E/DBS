@@ -17,6 +17,12 @@ add_subdirectory(catalog)
 
 add_subdirectory(storage)
 
+add_subdirectory(expr)
+
+add_subdirectory(execution)
+
+add_subdirectory(extsort)
+
 # The example_test target shows the usages of the predefined test fixtures.
 # It should be disabled in the assignment distribution.
 #add_tdb_test(example_test)

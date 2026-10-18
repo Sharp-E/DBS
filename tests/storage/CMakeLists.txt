@@ -21,3 +21,5 @@ add_tdb_test_binary(BasicTestTable)
 gtest_discover_tests(BasicTestTable)
 
 
+add_tdb_test(BasicTestSortedDataPage)
+
