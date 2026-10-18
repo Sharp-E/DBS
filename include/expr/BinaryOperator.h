@@ -25,7 +25,8 @@ private:
                    std::unique_ptr<ExprNode>&& left,
                    std::unique_ptr<ExprNode>&& right);
 
-    // TODO implement me
+    OpType m_optype;
+    FunctionInfo m_func;
 };
 
 }

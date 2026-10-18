@@ -21,7 +21,8 @@ public:
 private:
     Variable(const Schema* schema, FieldId fid);
 
-    // TODO implement me
+    const Schema* m_schema;
+    FieldId m_fid;
 };
 
 };
