@@ -29,7 +29,7 @@ public:
 private:
     Limit(std::unique_ptr<PlanNode>&& child, size_t count);
 
-    // You can add your own states here.
+    size_t m_count;
 
     friend class LimitState;
 };

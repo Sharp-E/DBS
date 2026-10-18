@@ -47,7 +47,8 @@ private:
 
     const Limit* m_plan;
 
-    // You can add your own state here...
+    //! number of records returned so far
+    size_t m_n;
 
     friend class Limit;
 };

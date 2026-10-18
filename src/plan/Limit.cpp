@@ -1,42 +1,37 @@
 #include "plan/Limit.h"
 #include "execution/LimitState.h"
-#include "catalog/systables/initoids.h"
-
-#include <absl/strings/str_format.h>
 
 namespace taco {
 
-Limit::Limit(std::unique_ptr<PlanNode>&& child, size_t cnt)
+Limit::Limit(std::unique_ptr<PlanNode>&& child, size_t count)
 : PlanNode(TAG(Limit), std::move(child))
+, m_count(count)
 {
-    // TODO: implement it
 }
 
 std::unique_ptr<Limit>
-Limit::Create(std::unique_ptr<PlanNode>&& child, size_t cnt) {
-    return absl::WrapUnique(new Limit(std::move(child), cnt));
+Limit::Create(std::unique_ptr<PlanNode>&& child, size_t count) {
+    return absl::WrapUnique(new Limit(std::move(child), count));
 }
 
 Limit::~Limit() {
-    // TODO: implement it
 }
 
 void
 Limit::node_properties_to_string(std::string& buf, int indent) const {
-    // For debugging purpose, you can implement it base on your need.
+    append_indent(buf, indent);
+    absl::StrAppendFormat(&buf, "COUNT = %d", (int) m_count);
 }
 
 std::unique_ptr<PlanExecState>
 Limit::create_exec_state() const {
-    // TODO: implement it
-    return nullptr;
+    std::unique_ptr<PlanExecState> child = get_child(0)->create_exec_state();
+    return absl::WrapUnique(new LimitState(this, std::move(child)));
 }
 
 const Schema*
 Limit::get_output_schema() const {
-    // TODO: implement it
-    return nullptr;
+    return get_child(0)->get_output_schema();
 }
 
-
-}
+}    // namespace taco
