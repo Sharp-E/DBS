@@ -44,7 +44,10 @@ private:
     ProjectionState(const Projection* plan, std::unique_ptr<PlanExecState>&& child);
 
     const Projection*       m_plan;
-    // You can add your own states here.
+    //! evaluated output fields, owned by this state
+    std::vector<Datum>      m_cur;
+
+    void ComputeCurrent();
 
     friend class Projection;
 };

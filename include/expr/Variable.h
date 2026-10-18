@@ -18,6 +18,8 @@ public:
     Datum Eval(const char* record) const override;
 
     void node_properties_to_string(std::string &buf, int indent) const override;
+
+    FieldId GetFieldId() const { return m_fid; }
 private:
     Variable(const Schema* schema, FieldId fid);
 

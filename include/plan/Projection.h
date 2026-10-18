@@ -34,7 +34,8 @@ private:
     Projection(std::unique_ptr<PlanNode>&& child,
                std::vector<std::unique_ptr<ExprNode>>&& exprs);
 
-    // You can add your own states here.
+    std::vector<std::unique_ptr<ExprNode>> m_exprs;
+    std::unique_ptr<Schema> m_schema;
 
     friend class ProjectionState;
 };

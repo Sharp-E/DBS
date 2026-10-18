@@ -2,58 +2,88 @@
 
 namespace taco {
 
-ProjectionState::ProjectionState(const Projection* plan, std::unique_ptr<PlanExecState>&& child)
-: PlanExecState(TAG(ProjectionState), std::move(child)), m_plan(plan)
+ProjectionState::ProjectionState(const Projection* plan,
+                                 std::unique_ptr<PlanExecState>&& child)
+: PlanExecState(TAG(ProjectionState), std::move(child))
+, m_plan(plan)
 {
-    // TODO: implement it
 }
 
 ProjectionState::~ProjectionState() {
-    // TODO: implement it
+    if (m_initialized) {
+        close();
+    }
 }
 
 void
 ProjectionState::init() {
-    // TODO: implement it
+    get_child(0)->init();
+    m_cur.clear();
+    m_initialized = true;
+}
+
+void
+ProjectionState::ComputeCurrent() {
+    std::vector<NullableDatumRef> rec = get_child(0)->get_record();
+    m_cur.clear();
+    m_cur.reserve(m_plan->m_exprs.size());
+    for (const auto& expr : m_plan->m_exprs) {
+        m_cur.emplace_back(expr->Eval(rec));
+    }
 }
 
 bool
 ProjectionState::next_tuple() {
-    // TODO: implement it
-    return false;
+    if (!get_child(0)->next_tuple()) {
+        m_cur.clear();
+        return false;
+    }
+    ComputeCurrent();
+    return true;
 }
 
 void
-ProjectionState::node_properties_to_string(std::string& buf, int indent) const {
-    // For debugging purpose, you can implement it base on your need.
+ProjectionState::node_properties_to_string(std::string &buf, int indent) const {
+    append_indent(buf, indent);
 }
 
 std::vector<NullableDatumRef>
 ProjectionState::get_record() {
-    // TODO: implement it
-    return {};
+    std::vector<NullableDatumRef> out;
+    out.reserve(m_cur.size());
+    for (const Datum& d : m_cur) {
+        out.emplace_back(d);
+    }
+    return out;
 }
 
 void
 ProjectionState::close() {
-    // TODO: implement it
+    m_cur.clear();
+    get_child(0)->close();
+    m_initialized = false;
 }
 
 void
 ProjectionState::rewind() {
-    // TODO: implement it
+    m_cur.clear();
+    get_child(0)->rewind();
 }
 
 Datum
 ProjectionState::save_position() const {
-    // TODO: implement it
-    return Datum::FromNull();
+    return get_child(0)->save_position();
 }
 
 bool
 ProjectionState::rewind(DatumRef saved_position) {
-    // TODO: implement it
-    return false;
+    bool ok = get_child(0)->rewind(saved_position);
+    if (ok) {
+        ComputeCurrent();
+    } else {
+        m_cur.clear();
+    }
+    return ok;
 }
 
 }
