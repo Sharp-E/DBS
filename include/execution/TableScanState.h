@@ -49,7 +49,10 @@ private:
 
     const TableScan *m_plan;
 
-    // You can add your own states here.
+    std::unique_ptr<Table> m_table;
+    std::unique_ptr<Table::Iterator> m_iter;
+    //! current record; Datums may point into the page pinned by m_iter
+    std::vector<Datum> m_cur;
 
     friend class TableScan;
 };

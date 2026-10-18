@@ -42,55 +42,77 @@ TableScanState::TableScanState(const TableScan *plan,
                                std::unique_ptr<Table> table)
 : PlanExecState(TAG(TableScanState))
 , m_plan(plan)
+, m_table(std::move(table))
 {
-    // TODO: implement it
 }
 
 TableScanState::~TableScanState() {
-    // TODO: implement it
+    if (m_initialized) {
+        close();
+    }
 }
 
 void
 TableScanState::node_properties_to_string(std::string &buf, int indent) const {
-    // For debugging purpose, you can implement it base on your need.
+    append_indent(buf, indent);
 }
 
 void
 TableScanState::init() {
-    // TODO: implement it
+    m_iter.reset(new Table::Iterator(m_table->StartScan()));
+    m_cur.clear();
+    m_initialized = true;
 }
 
 bool
 TableScanState::next_tuple() {
-    // TODO: implement it
-    return false;
+    m_cur.clear();
+    if (!m_iter || !m_iter->Next()) {
+        return false;
+    }
+    m_cur = m_plan->get_output_schema()->DissemblePayload(
+        m_iter->GetCurrentRecord().GetData());
+    return true;
 }
 
 std::vector<NullableDatumRef>
 TableScanState::get_record() {
-    // TODO: implement it
-    return {};
+    std::vector<NullableDatumRef> out;
+    out.reserve(m_cur.size());
+    for (const Datum &d : m_cur) {
+        out.emplace_back(d);
+    }
+    return out;
 }
 
 void
 TableScanState::close() {
-    // TODO: implement it
+    m_cur.clear();
+    if (m_iter) {
+        m_iter->EndScan();
+        m_iter.reset();
+    }
+    m_initialized = false;
 }
 
 void
 TableScanState::rewind() {
-    // TODO: implement it
+    m_cur.clear();
+    if (m_iter) {
+        m_iter->EndScan();
+    }
+    m_iter.reset(new Table::Iterator(m_table->StartScan()));
 }
 
 Datum
 TableScanState::save_position() const {
-    // TODO: implement it
+    LOG(kFatal, "TableScanState::save_position() not implemented (project 5)");
     return Datum::FromNull();
 }
 
 bool
 TableScanState::rewind(DatumRef saved_position) {
-    // TODO: implement it
+    LOG(kFatal, "TableScanState::rewind(pos) not implemented (project 5)");
     return false;
 }
 

@@ -45,7 +45,8 @@ private:
 
     const Selection* m_plan;
 
-    // You can add your own state here...
+    //! refs into the child's current record (valid until child moves)
+    std::vector<NullableDatumRef> m_cur;
 
     friend class Selection;
 };
