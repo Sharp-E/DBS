@@ -303,13 +303,74 @@ VarlenDataPage::InsertRecordAt(SlotId sid, Record &rec) {
                     sid, GetMinSlotId(), GetMaxSlotId() + 1);
     }
 
-    return false;
+    VarlenDataPageHeader *hdr = GetHdr(m_pagebuf);
+    FieldOffset len = rec.GetLength();
+    FieldOffset max_len = RecordSpaceEnd(1) - hdr->m_ph_sz;
+    if (len < 0 || len > max_len)
+        return false;
+    FieldOffset alen = AlignedLen(len);
+    if (alen > max_len)
+        return false;
+
+    // inserting always adds one slot to the slot array
+    SlotId new_nslots = hdr->m_nslots + 1;
+    FieldOffset end = RecordSpaceEnd(new_nslots);
+    if (hdr->m_fs_begin + alen > end) {
+        if (!hdr->m_has_hole ||
+            hdr->m_ph_sz + UsedSpace(m_pagebuf, INVALID_SID) + alen > end) {
+            rec.GetRecordId().sid = INVALID_SID;
+            return true;
+        }
+        CompactPage(m_pagebuf);
+    }
+
+    // shift slots [sid, nslots] up by one, from the top down
+    for (SlotId i = hdr->m_nslots; i >= sid; --i) {
+        *GetSlot(m_pagebuf, i + 1) = *GetSlot(m_pagebuf, i);
+        if (i == MinSlotId) break;
+    }
+    hdr->m_nslots = new_nslots;
+
+    SlotData *slot = GetSlot(m_pagebuf, sid);
+    slot->m_off = hdr->m_fs_begin;
+    slot->m_len = len;
+    memcpy(m_pagebuf + slot->m_off, rec.GetData(), len);
+    hdr->m_fs_begin = hdr->m_fs_begin + alen;
+    hdr->m_cnt = hdr->m_cnt + 1;
+    rec.GetRecordId().sid = sid;
+    return true;
 }
 
 void
 VarlenDataPage::RemoveSlot(SlotId sid) {
     CheckSID(sid);
 
+    VarlenDataPageHeader *hdr = GetHdr(m_pagebuf);
+    SlotData *slot = GetSlot(m_pagebuf, sid);
+    if (slot->IsValid()) {
+        FieldOffset alen = AlignedLen(slot->m_len);
+        if (slot->m_off + alen == hdr->m_fs_begin) {
+            hdr->m_fs_begin = slot->m_off;
+        } else {
+            hdr->m_has_hole = true;
+        }
+        hdr->m_cnt = hdr->m_cnt - 1;
+    }
+
+    // shift slots (sid, nslots] down by one
+    for (SlotId i = sid; i < hdr->m_nslots; ++i) {
+        *GetSlot(m_pagebuf, i) = *GetSlot(m_pagebuf, i + 1);
+    }
+    hdr->m_nslots = hdr->m_nslots - 1;
+
+    while (hdr->m_nslots > 0 &&
+           !GetSlot(m_pagebuf, (SlotId) hdr->m_nslots)->IsValid()) {
+        hdr->m_nslots = hdr->m_nslots - 1;
+    }
+    if (hdr->m_cnt == 0) {
+        hdr->m_fs_begin = hdr->m_ph_sz;
+        hdr->m_has_hole = false;
+    }
 }
 
 void

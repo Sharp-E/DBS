@@ -100,8 +100,7 @@ private:
          * Save the position of current iterator so that later on can be rewind to this position.
          */
         uint64_t SavePosition() const override {
-            // TODO implement it
-            return 0;
+            return m_loaded ? ((((uint64_t) m_pid) << 32) | (uint64_t) m_sid) : 0;
         }
 
         /*!
@@ -119,7 +118,13 @@ private:
         void EndScan() override;
     private:
 
-        // You can add your own states for the iterator here.
+        const File* m_file;
+        PageNumber m_npages;
+        unique_malloced_ptr m_buf;
+        PageNumber m_pid;
+        SlotId m_sid;
+        bool m_loaded;
+        void LoadPage(PageNumber pid);
     };
 
     ExternalSort(const SortCompareFunction& comp, size_t merge_ways);
@@ -151,7 +156,8 @@ private:
      */
     PageNumber MergeInternalRuns(size_t low_run, size_t high_run);
 
-    // You may add more utility functions if necessary.
+    char* GetBuf(size_t i) { return (char*) m_buf.get() + i * PAGE_SIZE; }
+    void AppendPage(uint8_t fidx, const char* buf);
 
     //! 0 or 1, indicates which file current pass is using.
     uint8_t m_current_pass;
@@ -167,7 +173,9 @@ private:
     //! Saves the page boundaries of last pass sorted runs.
     std::vector<PageNumber> m_run_boundaries;
 
-    // You can add your own states here.
+    unique_malloced_ptr m_buf;
+    PageNumber m_npages[2];
+    PageNumber m_write_pid;
 };
 
 }   // namespace taco
