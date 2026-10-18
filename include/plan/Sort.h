@@ -4,6 +4,7 @@
 #include "plan/PlanNode.h"
 #include "expr/ExprNode.h"
 #include "extsort/ExternalSort.h"
+#include "utils/builtin_funcs.h"
 
 namespace taco {
 
@@ -40,7 +41,9 @@ private:
 
     SortCompareFunction m_cmp;
 
-    // You can add your own states here.
+    std::vector<std::unique_ptr<ExprNode>> m_exprs;
+    std::vector<bool> m_desc;
+    std::vector<FunctionInfo> m_lt;
 
     friend class SortState;
 };

@@ -46,7 +46,13 @@ private:
 
     const Sort* m_plan;
 
-    // You can add your own states here.
+    std::unique_ptr<ExternalSort> m_sorter;
+    std::unique_ptr<ItemIterator> m_iter;
+    std::vector<Datum> m_cur;
+    bool m_sorted;
+
+    void DoSort();
+    void LoadCurrent();
 
     friend class Sort;
 };
