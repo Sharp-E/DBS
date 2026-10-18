@@ -45,7 +45,12 @@ private:
 
     const Aggregation* m_plan;
 
-    // You can add your own states here.
+    //! finalized aggregation results (one output record)
+    std::vector<Datum> m_result;
+    bool m_computed;
+    bool m_returned;
+
+    void Compute();
 
     friend class Aggregation;
 };

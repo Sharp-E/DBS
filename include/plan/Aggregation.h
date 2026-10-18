@@ -3,6 +3,7 @@
 
 #include "plan/PlanNode.h"
 #include "expr/ExprNode.h"
+#include "utils/builtin_funcs.h"
 #include "catalog/systables/Aggregation.h"
 
 namespace taco {
@@ -52,8 +53,12 @@ private:
                 std::vector<std::unique_ptr<ExprNode>>&& exprs,
                 const std::vector<AggType>& aggtyps);
 
-
-    // You can add your own states here.
+    std::vector<std::unique_ptr<ExprNode>> m_exprs;
+    std::vector<AggType> m_aggtyps;
+    std::vector<FunctionInfo> m_init;
+    std::vector<FunctionInfo> m_acc;
+    std::vector<FunctionInfo> m_fin;
+    std::unique_ptr<Schema> m_schema;
 
     friend class AggregationState;
 };
