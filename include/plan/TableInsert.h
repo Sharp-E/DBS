@@ -35,7 +35,7 @@ public:
 private:
     TableInsert(std::unique_ptr<PlanNode>&& child, std::shared_ptr<const TableDesc> tabdesc);
 
-    // You can add your own states here.
+    std::shared_ptr<const TableDesc> m_tabdesc;
 
     friend class TableInsertState;
 };

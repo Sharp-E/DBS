@@ -36,7 +36,8 @@ private:
     TableDelete(std::shared_ptr<const TableDesc> tabdesc,
                 std::unique_ptr<ExprNode>&& cond);
 
-    // You can add your own states here.
+    std::shared_ptr<const TableDesc> m_tabdesc;
+    std::unique_ptr<ExprNode> m_cond;
 
     friend class TableDeleteState;
 };

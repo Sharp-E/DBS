@@ -51,7 +51,10 @@ private:
 
     const TableInsert* m_plan;
 
-    // You can add your own states here.
+    std::unique_ptr<Table> m_table;
+    std::vector<std::unique_ptr<Index>> m_idxs;
+    Datum m_result;
+    bool m_done;
 
     friend class TableInsert;
 };
