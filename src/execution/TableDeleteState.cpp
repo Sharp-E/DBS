@@ -8,7 +8,7 @@ TableDeleteState::TableDeleteState(const TableDelete* plan,
                                    std::vector<std::unique_ptr<Index>>&& idxs)
 : PlanExecState(TAG(TableDeleteState))
 , m_plan(plan), m_table(std::move(table)), m_idxs(std::move(idxs))
-, m_done(false) {}
+, m_result(Datum::FromNull()), m_done(false) {}
 
 TableDeleteState::~TableDeleteState() {
     if (m_initialized) close();

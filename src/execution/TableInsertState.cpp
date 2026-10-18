@@ -9,7 +9,7 @@ TableInsertState::TableInsertState(const TableInsert* plan,
                                    std::unique_ptr<PlanExecState>&& child)
 : PlanExecState(TAG(TableInsertState), std::move(child))
 , m_plan(plan), m_table(std::move(table)), m_idxs(std::move(idxs))
-, m_done(false) {}
+, m_result(Datum::FromNull()), m_done(false) {}
 
 TableInsertState::~TableInsertState() {
     if (m_initialized) close();
